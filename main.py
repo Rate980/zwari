@@ -1,5 +1,3 @@
-import os
-
 import discord
 from discord.ext import commands
 
@@ -10,10 +8,17 @@ class MyBot(commands.Bot):
 
 
 if __name__ == '__main__':
-    from pydotenv import load_dotenv
+    import os
     from pathlib import Path
-    prefix = Path(__file__).resolve().parent
-    load_dotenv(prefix.joinpath('.env'))
 
+    from pydotenv import load_dotenv
+
+    file_prefix = Path(__file__).resolve().parent
+    load_dotenv(file_prefix.joinpath('.env'))
+
+    token = os.environ['TOKEN']
+    prefix = os.environ['PREFIX']
     intents = discord.Intents.all()
     intents.typing = False
+
+    bot = MyBot(prefix, intents=intents)
