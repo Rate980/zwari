@@ -11,7 +11,7 @@ if __name__ == '__main__':
     import os
     from pathlib import Path
 
-    from pydotenv import load_dotenv
+    from dotenv import load_dotenv
 
     file_prefix = Path(__file__).resolve().parent
     load_dotenv(file_prefix.joinpath('.env'))
